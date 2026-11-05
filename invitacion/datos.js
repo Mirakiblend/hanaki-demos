@@ -65,6 +65,6 @@ window.INVITACION = {
     mostrar: true,
     nombre: "HANAKI Studio",
     texto: "¿Quieres una invitación así para tu cumpleaños, quinceañero, baby shower o boda? La personalizamos con tus datos y colores.",
-    whatsapp: "", // tu número, ej. "51987654321"
+    whatsapp: "51957596332", // tu número, ej. "51987654321"
   },
 };
