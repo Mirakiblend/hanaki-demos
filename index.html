@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HANAKI Studio · Demos</title>
+  <meta name="description" content="Demostraciones de HANAKI Studio: invitaciones digitales y páginas web para negocios en Lima." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#fbf3e8" />
+  <style>
+    :root { --fondo: #fbf3e8; --papel: #fffaf3; --tinta: #2b1834; --suave: #6b5a6e; --acento: #e8573f; --linea: #e6d3bd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--fondo); color: var(--tinta); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { width: min(760px, 100% - 32px); margin: 0 auto; padding: 56px 0 72px; }
+    .marca { font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--acento); font-weight: 700; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 8vw, 3.4rem); line-height: 1.05; margin: 8px 0 12px; }
+    .lead { color: var(--suave); margin: 0 0 32px; }
+    .demos { display: grid; gap: 16px; }
+    a.demo { display: block; text-decoration: none; color: inherit; background: var(--papel); border: 1px solid var(--linea); border-radius: 18px; padding: 22px; transition: transform .15s, border-color .15s; }
+    a.demo:hover { transform: translateY(-2px); border-color: var(--acento); }
+    .demo b { font-family: Georgia, serif; font-size: 1.4rem; display: block; }
+    .demo span { color: var(--suave); }
+    .demo em { display: inline-block; margin-top: 10px; font-style: normal; font-weight: 600; color: var(--acento); }
+    footer { margin-top: 40px; font-size: .85rem; color: var(--suave); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="marca">HANAKI Studio</p>
+    <h1>Diseño digital para tu evento o negocio.</h1>
+    <p class="lead">Estas son demostraciones con datos ficticios. Tu versión se personaliza con tus datos, colores y WhatsApp.</p>
+    <div class="demos">
+      <a class="demo" href="invitacion/">
+        <b>Invitación digital de cumpleaños</b>
+        <span>Cuenta regresiva, ubicación, calendario y confirmación por WhatsApp. También para quinceañeros, baby showers y bodas.</span>
+        <em>Ver demo →</em>
+      </a>
+      <a class="demo" href="barberia/">
+        <b>Página web para barbería</b>
+        <span>Servicios y precios, equipo, horarios en vivo, ubicación y contacto por WhatsApp.</span>
+        <em>Ver demo →</em>
+      </a>
+    </div>
+    <footer>HANAKI Studio · Lima, Perú</footer>
+  </main>
+</body>
+</html>
