@@ -128,6 +128,6 @@ window.NEGOCIO = {
     mostrar: true,
     nombre: "HANAKI Studio",
     texto: "¿Quieres una página así para tu barbería? Se adapta con tus fotos, precios, barberos y WhatsApp.",
-    whatsapp: "", // tu número, ejemplo: "51987654321"
+    whatsapp: "51957596332", // tu número, ejemplo: "51987654321"
   },
 };
