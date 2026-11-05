@@ -10,10 +10,11 @@ _Última actualización: 2026-11-05 · Claude_
 - PR #1 fusionado (con autorización de Gerardo).
 - WhatsApp de HANAKI (51957596332) en los botones "Quiero mi invitación / mi web" de ambas demos.
 
+- Publicado en Cloudflare Pages: https://hanaki-demos.pages.dev (se actualiza solo al fusionar a `main`). Verificado en navegador: fotos y fuentes cargan.
+
 ## En curso
 - Nada.
 
 ## Pendiente
-- [ ] Gerardo: conectar el repo a Cloudflare Pages.
-- [ ] Probar ambas demos en un celular real con internet (fotos y fuentes).
+- [ ] Probar ambas demos en el celular de Gerardo.
 - [ ] Revisión de ChatGPT del `RESUMEN-REVISION.md` de la barbería.
