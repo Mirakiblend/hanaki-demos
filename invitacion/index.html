@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es-PE" data-tema="fiesta">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación de cumpleaños · Demostración</title>
+  <meta name="description" content="Invitación digital de cumpleaños: cuenta regresiva, ubicación y confirmación de asistencia por WhatsApp." />
+  <!-- Vista previa al compartir por WhatsApp (cambiar por cliente) -->
+  <meta property="og:title" content="¡Estás invitado a mi cumpleaños!" />
+  <meta property="og:description" content="Toca para ver la fecha, el lugar y confirmar tu asistencia." />
+  <meta name="theme-color" content="#fbf3e8" />
+  <!-- DEMO: evita que Google indexe la demostración. Borrar para un cliente real. -->
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23e8573f'/%3E%3Cpath d='M20 40h24v8H20zM24 30h16v10H24z' fill='%23fff'/%3E%3Cpath d='M32 18c-3 4-3 7 0 9 3-2 3-5 0-9z' fill='%23ffd166'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="aviso-demo" id="aviso-demo" hidden>
+    <strong>DEMOSTRACIÓN</strong>
+    <span>Evento ficticio · nombres, fecha y lugar de ejemplo</span>
+  </div>
+
+  <main>
+    <!-- PORTADA -->
+    <section class="portada">
+      <div class="confeti" id="confeti" aria-hidden="true"></div>
+      <div class="contenedor portada__caja">
+        <p class="saludo" id="saludo-personal" hidden></p>
+        <p class="sobretitulo">Estás invitado al cumpleaños de</p>
+        <h1 class="nombre" data-campo="festejado"></h1>
+        <div class="edad" id="edad" aria-hidden="true"><span id="edad-num"></span><small>años</small></div>
+        <p class="frase" data-campo="frase"></p>
+        <div class="fecha-grande">
+          <span id="fecha-dia"></span>
+          <span class="fecha-grande__sep" aria-hidden="true">✦</span>
+          <span id="fecha-hora"></span>
+        </div>
+        <div class="botones">
+          <a class="btn btn--principal" href="#confirmar">Confirmar asistencia</a>
+          <a class="btn btn--linea" id="btn-calendario" target="_blank" rel="noopener noreferrer">Agregar al calendario</a>
+        </div>
+      </div>
+      <a class="bajar" href="#cuenta" aria-label="Ver más">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+      </a>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion seccion--cuenta" id="cuenta">
+      <div class="contenedor">
+        <p class="etiqueta" id="cuenta-titulo">Faltan</p>
+        <div class="cuenta" id="cuenta-cajas" role="timer" aria-live="off">
+          <div><b id="c-dias">0</b><span>días</span></div>
+          <div><b id="c-horas">0</b><span>horas</span></div>
+          <div><b id="c-min">0</b><span>min</span></div>
+          <div><b id="c-seg">0</b><span>seg</span></div>
+        </div>
+        <p class="cuenta-fin" id="cuenta-fin" hidden></p>
+      </div>
+    </section>
+
+    <!-- MENSAJE -->
+    <section class="seccion">
+      <div class="contenedor contenedor--estrecho carta">
+        <p class="carta__texto" data-campo="mensaje"></p>
+        <p class="carta__firma" data-campo="firma"></p>
+      </div>
+    </section>
+
+    <!-- DETALLES -->
+    <section class="seccion seccion--suave" id="detalles">
+      <div class="contenedor">
+        <h2 class="titulo">Los detalles</h2>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <span class="tarjeta__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            </span>
+            <h3>Cuándo</h3>
+            <p id="det-fecha"></p>
+            <p class="suave" id="det-hora"></p>
+          </article>
+          <article class="tarjeta">
+            <span class="tarjeta__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </span>
+            <h3>Dónde</h3>
+            <p><b id="det-lugar"></b></p>
+            <p class="suave" id="det-direccion"></p>
+            <p class="suave pequeno" id="det-referencia"></p>
+            <a class="btn btn--linea btn--mini" id="btn-mapa" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+          </article>
+          <article class="tarjeta" id="t-vestimenta">
+            <span class="tarjeta__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 3l4 3 4-3 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/></svg>
+            </span>
+            <h3>Vestimenta</h3>
+            <p data-campo="vestimenta"></p>
+          </article>
+          <article class="tarjeta" id="t-regalo">
+            <span class="tarjeta__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg>
+            </span>
+            <h3>Regalo</h3>
+            <p data-campo="regalo"></p>
+          </article>
+        </div>
+        <p class="nota-evento" data-campo="nota"></p>
+      </div>
+    </section>
+
+    <!-- ITINERARIO -->
+    <section class="seccion" id="itinerario">
+      <div class="contenedor contenedor--estrecho">
+        <h2 class="titulo">La noche</h2>
+        <ol class="linea" id="linea"></ol>
+      </div>
+    </section>
+
+    <!-- CONFIRMAR -->
+    <section class="seccion seccion--confirmar" id="confirmar">
+      <div class="contenedor contenedor--estrecho">
+        <h2 class="titulo">¿Nos acompañas?</h2>
+        <p class="centro" id="limite"></p>
+        <form class="formulario" id="formulario" novalidate>
+          <label>Tu nombre
+            <input type="text" name="nombre" id="f-nombre" maxlength="40" autocomplete="name" placeholder="Ej.: Ana y Luis" required />
+          </label>
+          <fieldset class="opciones">
+            <legend>¿Asistirás?</legend>
+            <label class="opcion"><input type="radio" name="asiste" value="si" checked /><span>¡Sí, ahí estaré!</span></label>
+            <label class="opcion"><input type="radio" name="asiste" value="no" /><span>No podré ir</span></label>
+          </fieldset>
+          <label id="campo-personas">¿Cuántas personas?
+            <select name="personas" id="f-personas"></select>
+          </label>
+          <label><span>Mensaje para <span data-campo="festejado"></span> <small>(opcional)</small></span>
+            <textarea name="mensaje" maxlength="140" rows="3" placeholder="Ej.: ¡Feliz cumple! Nos vemos ahí."></textarea>
+          </label>
+          <p class="error" id="error" role="alert" hidden>Escribe tu nombre para confirmar.</p>
+          <button class="btn btn--wa btn--ancho" type="submit">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa" /></svg>
+            Confirmar por WhatsApp
+          </button>
+          <p class="pequeno centro suave" id="nota-form"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- GENERADOR DE ENLACES PERSONALIZADOS (se muestra con ?generador=1) -->
+    <section class="seccion seccion--suave" id="generador" hidden>
+      <div class="contenedor contenedor--estrecho">
+        <h2 class="titulo">Enlaces personalizados</h2>
+        <p class="centro suave">Para el anfitrión: crea un enlace con el nombre de cada invitado y sus pases. Al abrirlo, verá un saludo con su nombre.</p>
+        <form class="formulario" id="form-gen" novalidate>
+          <label>Nombre del invitado
+            <input type="text" name="nombre" maxlength="40" placeholder="Ej.: Familia Rojas" />
+          </label>
+          <label>Pases
+            <select name="pases" id="gen-pases"></select>
+          </label>
+          <button class="btn btn--principal btn--ancho" type="submit">Crear enlace</button>
+        </form>
+        <div class="resultado" id="gen-resultado" hidden>
+          <code id="gen-url"></code>
+          <div class="botones">
+            <button class="btn btn--linea" type="button" id="gen-copiar">Copiar enlace</button>
+            <a class="btn btn--wa" id="gen-enviar" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solo demo: anuncio del creador -->
+    <section class="creador" id="creador" hidden>
+      <div class="contenedor contenedor--estrecho creador__caja">
+        <p class="etiqueta" id="creador-nombre"></p>
+        <p class="creador__texto" id="creador-texto"></p>
+        <div class="botones botones--centro">
+          <button class="btn btn--principal" type="button" id="btn-creador">Quiero mi invitación</button>
+          <a class="btn btn--linea" id="link-ejemplo">Ver ejemplo personalizado</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p id="pie-texto"></p>
+  </footer>
+
+  <!-- Selector de estilos: solo en modo demo -->
+  <div class="temas" id="temas" role="group" aria-label="Probar estilos" hidden>
+    <span>Estilo:</span>
+    <button type="button" data-tema="fiesta" aria-label="Fiesta"></button>
+    <button type="button" data-tema="elegante" aria-label="Elegante"></button>
+    <button type="button" data-tema="pastel" aria-label="Pastel"></button>
+  </div>
+
+  <!-- Vista previa del mensaje (modo demo o sin número) -->
+  <dialog class="modal" id="modal" aria-labelledby="modal-titulo">
+    <div class="modal__caja">
+      <p class="etiqueta">Vista previa · modo demostración</p>
+      <h2 class="modal__titulo" id="modal-titulo">Este mensaje llegaría al WhatsApp del anfitrión</h2>
+      <pre class="burbuja" id="modal-mensaje"></pre>
+      <p class="pequeno suave">En la invitación real, este botón abre WhatsApp con el mensaje listo para enviar.</p>
+      <div class="botones">
+        <button class="btn btn--linea" type="button" id="btn-copiar">Copiar</button>
+        <button class="btn btn--principal" type="button" id="btn-cerrar">Entendido</button>
+      </div>
+    </div>
+  </dialog>
+
+  <canvas class="lluvia" id="lluvia" aria-hidden="true"></canvas>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></symbol>
+  </svg>
+
+  <noscript><p class="centro">Activa JavaScript para ver la invitación.</p></noscript>
+
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
