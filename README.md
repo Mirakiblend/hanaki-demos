@@ -3,10 +3,10 @@
 Escaparate de demostraciones comerciales de HANAKI Studio (Lima, Perú).
 Todas las demos usan **datos ficticios** y están marcadas como demostración.
 
-| Carpeta | Qué es | Enlace (cuando se conecte Cloudflare Pages) |
+| Carpeta | Qué es | Enlace |
 |---|---|---|
-| `invitacion/` | Invitación digital de cumpleaños con confirmación por WhatsApp | `/invitacion/` |
-| `barberia/` | Página web para barbería (La Navaja · ficticia) | `/barberia/` |
+| `invitacion/` | Invitación digital de cumpleaños con confirmación por WhatsApp | https://hanaki-demos.pages.dev/invitacion/ |
+| `barberia/` | Página web para barbería (La Navaja · ficticia) | https://hanaki-demos.pages.dev/barberia/ |
 | `docs/` | Textos de venta y resúmenes de revisión (uso interno) | — |
 
 Cada demo se personaliza editando **solo su archivo `datos.js`**. Las instrucciones están en el `README.md` de cada carpeta.
